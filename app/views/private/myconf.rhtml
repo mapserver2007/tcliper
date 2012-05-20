@@ -1,0 +1,72 @@
+<table>
+	<tbody>
+		<tr>
+			<td>
+				<h3>
+					<%= link_to_myclip %>
+				</h3>
+			</td>
+			<td>
+				<h3>
+					<%= link_to_myconf %>
+				</h3>
+			</td>
+			<td>
+				<h3>
+					<%= link_to_mygmdl %>
+				</h3>
+			</td>
+			<td>
+				<h3>
+					<%= link_to_myaddondl %>
+				</h3>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<div id="private_container">
+	<div class="private_info">
+		<table>
+			<tbody>
+				<tr>
+					<td>
+						<%= image_tag(@path_to_img + "myconf.png") %>
+					</td>
+					<td>
+						<p style="font-size: x-large;"><%= h current_user.login %>さんの登録情報</p>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="private_recommend">
+			<table class="register_form" cellspacing="0" cellpadding="0" border="0">
+				<tbody>
+					<tr>
+						<th>
+							tcliper ID
+						</th>
+						<td>
+							<%= h current_user.login %>
+						</td>
+					</tr>
+					<tr>
+						<th>
+							メールアドレス
+						</th>
+						<td>
+							<%= h @user[:email] %>
+						</td>
+					</tr>
+					<tr>
+						<th>
+							APIキー
+						</th>
+						<td>
+							<%= h @user[:apikey] %>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

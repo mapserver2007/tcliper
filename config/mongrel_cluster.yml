@@ -1,0 +1,12 @@
+---
+group: www-data
+address: 192.168.0.103
+log_file: /var/log/mongrel.log
+port: "3001"
+cwd: /usr/local/apache2/htdocs/tcliper
+docroot: /usr/local/apache2/htdocs/tcliper
+environment: production
+user: www-data
+pid_file: /var/run/mongrel/mongrel.pid
+servers: 1
+prefix: /tcliper

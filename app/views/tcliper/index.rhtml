@@ -1,0 +1,38 @@
+<div class="digg_pagination clip_paginate">
+	<%= will_paginate @clip %>
+</div>
+<div id="clip_container">
+	<ul class="clip_list">
+		<% @clip.each do |c| %>
+		<li id="clip_<%= c.id %>">
+			<table border="0">
+				<tbody>
+					<tr rowspan="3">
+						<td style="vertical-align:top; width:1px;">
+							<div class="clip_image">
+								<%= link_to_thumnail(c.title, c.url) %>
+							</div>
+						</td>
+						<td style="vertical-align:top;">
+							<div class="clip_info">
+								<h1>
+									<%= link_to_title(c.title, c.url) %>
+								</h1>
+								<div class="clip_detail">
+									<span class="clip_user"><%= c.user.login %></span>
+									<span class="clip_date"><%= c.date.to_s(:db) %></span>
+								</div>
+								<div class="clip_info_comment" id="clip_info_comment_<%=c[:id] %>"><%= h(c.comment) %></div>
+								<h2/>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</li>
+		<% end %>
+	</ol>
+	<div class="digg_pagination clip_paginate">
+		<%= will_paginate @clip %>
+	</div>
+</div>

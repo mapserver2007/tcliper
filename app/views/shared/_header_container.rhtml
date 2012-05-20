@@ -1,0 +1,55 @@
+<div id="header_container">
+	<div id="header_container_left">
+		<h1>
+			<%= link_to(image_tag(@path_to_img + 'logo.png', :alt => 'logo', :border => 0), @doc_root) %>
+			<p>ぶくまあつめ</p>
+		</h1>
+	</div>
+	<div id="header_container_right">
+		<div id="user_info">
+		<% if logged_in? %>
+			ようこそ、<%= h current_user.login %>さん！
+		<% else %>
+			ようこそ、ゲストさん！
+		<% end %>
+		</div>
+		<div>
+			<table align="right">
+				<tbody>
+					<tr>
+						<td>
+							<%= image_tag(@path_to_img + 'signup.png', :size => "24x24", :alt => 'signup', :border => 0) %>
+						</td>
+						<td>
+							<h2>
+								<%= link_to_tcliper_signup %>
+							</h2>
+						</td>
+						<td>
+							<%= image_tag(@path_to_img + 'login.png', :size => "24x24", :alt => 'login', :border => 0) %>
+						</td>
+						<td>
+							<h2>
+							<% if logged_in? %>
+								<%= link_to_tcliper_logout %>
+							<% else %>
+								<%= link_to_tcliper_login %>
+							<% end %>
+							</h2>
+						</td>
+						<% if logged_in? %>
+						<td>
+							<%= image_tag(@path_to_img + 'home.png', :size => "24x24", :alt => 'home', :border => 0) %>
+						</td>
+						<td>
+							<h2>
+								<%= link_to_private_page %>
+							</h2>
+						</td>
+						<% end %>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

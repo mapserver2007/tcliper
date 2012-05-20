@@ -1,0 +1,8 @@
+# Tcliper Configuration
+
+# System Mode
+# [production] or [development]
+mode: development
+
+# Display clips per page
+per_page: 10

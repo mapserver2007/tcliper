@@ -1,0 +1,15 @@
+<div class="syscommon_h">
+<% @menu["each"].each_with_index do |config_elem, i| %>
+	<%
+		url = "http://"
+		unless config_elem["uri_location"].nil?
+			url << (@menu["common"]["host1"] + config_elem["uri_location"])
+		end
+		unless config_elem["uri_subdomain"].nil?
+			url << (config_elem["uri_subdomain"] + "." + @menu["common"]["host2"])
+		end
+	%>
+	<%= link_to(config_elem["uri_text"], url) %>
+	<%= if @menu["each"].length != i + 1 then " | " end %>
+<% end -%>
+</div>

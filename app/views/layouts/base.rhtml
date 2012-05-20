@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<head>
+	<title><%= @title %></title>
+	<%= javascript_include_tag @path_to_lib + 'jquery' %>
+	<%= javascript_include_tag @path_to_js + 'tc_common' %>
+	<%= javascript_include_tag @path_to_js + 'tc_clip' %>
+	<%= stylesheet_link_tag @path_to_css['public'] + 'base' %>
+	<%= stylesheet_link_tag @path_to_css['public'] + 'paginate' %>
+	<%= stylesheet_link_tag @path_to_css['common'] + 'common' %>
+	<script type="text/javascript">var tc = new Tcliper();</script>
+</head>
+<body>
+	<!-- Header Container -->
+	<%= render :partial => 'shared/syscommon_h' %>
+	<!-- Main Container -->
+	<div id="main_container">
+		<%= render :partial => 'shared/header_container' %>
+		<%= yield %>
+	</div>
+	<!-- Footer Container -->
+	<%= render :partial => 'shared/syscommon_f' %>
+</body>
+</html>

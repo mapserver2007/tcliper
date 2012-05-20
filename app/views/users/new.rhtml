@@ -1,0 +1,37 @@
+<div id="signup_form">
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<%= image_tag(@path_to_img + "signup.png") %>
+				</td>
+				<td>
+					<p class="login_title">SIGNUP</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div style="font-size: 80%;">
+		<%= error_messages_for :user %>
+		<% form_for :user, :url => users_path do |f| -%>
+		<p class="signup_input">
+			<label for="login">ユーザID</label>
+			<%= f.text_field :login %>
+		</p>
+		<p class="signup_input">
+			<label for="email">メールアドレス</label>
+			<%= f.text_field :email %>
+		</p>
+		<p class="signup_input">
+			<label for="password">パスワード</label>
+			<%= f.password_field :password %>
+		</p>
+		<p class="signup_input">
+			<label for="password_confirmation">パスワード(確認)</label>
+			<%= f.password_field :password_confirmation %>
+		</p>
+
+		<p><%= submit_tag 'Signup' %></p>
+	<% end -%>
+	</div>
+</div>

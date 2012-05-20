@@ -1,0 +1,81 @@
+<table>
+	<tbody>
+		<tr>
+			<td>
+				<h3>
+					<%= link_to_myclip %>
+				</h3>
+			</td>
+			<td>
+				<h3>
+					<%= link_to_myconf %>
+				</h3>
+			</td>
+			<td>
+				<h3>
+					<%= link_to_mygmdl %>
+				</h3>
+			</td>
+			<td>
+				<h3>
+					<%= link_to_myaddondl %>
+				</h3>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<div id="private_container">
+	<div class="digg_pagination clip_paginate">
+		<%= will_paginate @clip %>
+	</div>
+	<div id="clip_container">
+		<ul class="clip_list">
+			<% @clip.each do |c| %>
+			<% if c.public %>
+			<li id="clip_<%= c.id %>">
+			<% else %>
+			<li id="clip_<%= c.id %>" class="clip_private">
+			<% end %>
+				<table border="0">
+					<tbody>
+						<tr rowspan="3">
+							<td style="vertical-align:top; width:0px;">
+								<div class="clip_image">
+									<%= link_to_thumnail(c.title, c.url) %>
+								</div>
+							</td>
+							<td style="vertical-align:top;">
+								<div class="clip_info">
+									<h1>
+										<%= link_to_title(c.title, c.url) %>
+										<span class="clip_edit" id="clip_edit_<%=c.id %>" onclick="tc.inline_edit('<%= c.id %>');return false;">
+											<%= link_to("編集", "#") %>
+										</span>
+										<%= image_tag(@path_to_img + "ajax-loader.gif", :id => "clip_editing_" + c.id.to_s, :class => "clip_editing") %>
+									</h1>
+									<div class="clip_detail">
+										<span class="clip_user"><%= c.user.login %></span>
+										<span class="clip_date"><%= c.date.to_s(:db) %></span>
+									</div>
+									<div class="clip_info_comment" id="clip_info_comment_<%=c.id %>"><%= h c.comment %></div>
+									<div class="clip_info_comment_edit" id="clip_info_comment_edit_<%=c.id %>">
+										<form method="post">
+											<%= text_area_tag_comment(c.id, c.comment) %>
+											<%= hidden_field_tag("authenticity_token", form_authenticity_token) %>
+											<input type="button" value="編集" onclick="tc.exec_edit('<%= @doc_root %>edit', '<%= c.id %>');" />
+										</form>
+									</div>
+									<h2/>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</li>
+			<% end %>
+		</ol>
+		<div class="digg_pagination clip_paginate">
+			<%= will_paginate @clip %>
+		</div>
+	</div>
+</div>
